@@ -9,7 +9,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Executes commands
-RUN npm ci
+RUN npm run build
+RUN npm start
 
 # Copies files from source to destination, in this case the root of the build context
 # into the root of the WORKDIR
