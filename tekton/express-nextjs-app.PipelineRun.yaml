@@ -22,7 +22,7 @@ spec:
               storage: 1Gi
           accessModes:
             - ReadWriteOnce
-    - name: pipeline-shared-data
+    - name: production-repository
       volumeClaimTemplate: 
         spec: 
           resources:

@@ -81,6 +81,14 @@ spec:
                   storage: 1Gi
               accessModes:
                 - ReadWriteOnce
+        - name: production-repository
+          volumeClaimTemplate: 
+            spec: 
+              resources:
+                requests:
+                  storage: 1Gi
+              accessModes:
+                - ReadWriteOnce
 ---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
