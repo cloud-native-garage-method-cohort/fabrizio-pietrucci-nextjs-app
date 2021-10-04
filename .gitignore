@@ -33,4 +33,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-tetkton/base/fabrizio-pietrucci-bootcamp-secret.yml
+tekton/base/fabrizio-pietrucci-bootcamp-secret.yml
