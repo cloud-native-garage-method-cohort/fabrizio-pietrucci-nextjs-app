@@ -69,7 +69,7 @@ spec:
         - name: sha
           value: $(tt.params.sha)
         - name: image-repo
-          value: quay.io/fabrizio_pietrucci/tekton-buildah-app
+          value: quay.io/fabrizio_pietrucci/nextjs-app
       workspaces:
         - name: pipeline-shared-data
           volumeClaimTemplate: 
