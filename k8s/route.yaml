@@ -10,4 +10,3 @@ spec:
     name: nextjs-app
     weight: 100
   wildcardPolicy: None
-
