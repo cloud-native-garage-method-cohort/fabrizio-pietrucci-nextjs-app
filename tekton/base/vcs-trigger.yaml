@@ -63,7 +63,7 @@ spec:
         name: nodejs
       params:
         - name: app-name
-          value: express-buildah-proj
+          value: nextjs-app
         - name: source-repo
           value: https://github.com/cloud-native-garage-method-cohort/fabrizio-pietrucci-nextjs-app.git
         - name: source-repo
@@ -71,7 +71,7 @@ spec:
         - name: sha
           value: $(tt.params.sha)
         - name: image-repo
-          value: quay.io/fabrizio_pietrucci/tekton-buildah-app
+          value: quay.io/fabrizio_pietrucci/nextjs-app
       workspaces:
         - name: pipeline-shared-data
           volumeClaimTemplate: 
