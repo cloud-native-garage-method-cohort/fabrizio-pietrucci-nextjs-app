@@ -56,7 +56,7 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: nextjs-app
+      generateName: nextjs-app-
     spec:
       serviceAccountName: build-bot
       pipelineRef:
@@ -65,9 +65,11 @@ spec:
         - name: app-name
           value: nextjs-app
         - name: source-repo
-          value: https://github.com/cloud-native-garage-method-cohort/fabrizio-pietrucci-nextjs-app.git
+          value: $(tt.params.source-repo)
+        - name: sha
+          value: $(tt.params.sha)
         - name: image-repo
-          value: quay.io/fabrizio_pietrucci/nextjs-app
+          value: quay.io/fabrizio_pietrucci/tekton-buildah-app
       workspaces:
         - name: pipeline-shared-data
           volumeClaimTemplate: 
