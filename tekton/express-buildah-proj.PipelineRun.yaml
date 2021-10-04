@@ -21,4 +21,12 @@ spec:
             requests:
               storage: 1Gi
           accessModes:
+            - ReadWriteOnce
+    - name: pipeline-shared-data
+      volumeClaimTemplate: 
+        spec: 
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
             - ReadWriteOnce    
