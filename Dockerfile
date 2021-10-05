@@ -1,25 +1,21 @@
-# Use node Docker image, version 16-alpine
-FROM quay.io/upslopeio/node-alpine
+# Multistep image build that builds the app and then copies the static rendered pages for serving 
+# them using nginx. This reduces the app size by a lot when compared to using a node server
 
-# From the documentation, "The WORKDIR instruction sets the working directory for any
-# RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile"
-WORKDIR /usr/src/app
+# Install dependencies and build the app
+FROM quay.io/upslopeio/node-alpine as build
+WORKDIR /app
 
-# COPY package.json and package-lock.json into root of WORKDIR
 COPY package*.json ./
-
-# Executes commands
 RUN npm ci
 
-# Copies files from source to destination, in this case the root of the build context
-# into the root of the WORKDIR
 COPY . .
-
-# Build the app
 RUN npm run build
 
-# Document that this container exposes something on port 3000
-EXPOSE 3000
+# Serve the static site using nginx
+FROM quay.io/upslopeio/nginx-unprivileged
 
-# Command to use for starting the application
-CMD ["npm", "start"]
+COPY --from=build /app/out /usr/share/nginx/html
+COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Document the port
+EXPOSE 3000
